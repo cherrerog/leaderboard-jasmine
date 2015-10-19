@@ -15,9 +15,16 @@ it("después de login muestra input para añadir players", function(){
  
         UI.insert(comp, div);
  
-        
- 
         expect($(div).find("input:button")[0]).toBeDefined();
+    });
+
+it("después de login no muestra input para añadir players", function(){
+	var div = document.createElement("form");
+        var comp = UI.render(Template.addPlayerForm);
+ 
+        UI.insert(comp, div);
+ 
+        expect($(div).find("input:button")[0]).not.toBeDefined();
     });
 
 
