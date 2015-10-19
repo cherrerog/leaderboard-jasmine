@@ -4,11 +4,7 @@ describe("Pruebas con login y logout", function(){
 		Tracker.afterFlush(done);
 		});
 	});
-afterEach(function(done){
-	Meteor.logout(function() {
-		Tracker.afterFlush(done);
-	});
-	});
+
 it("después de login muestra input para añadir players", function(){
 	var div = document.createElement("form");
         var comp = UI.render(Template.addPlayerForm);
@@ -17,6 +13,12 @@ it("después de login muestra input para añadir players", function(){
  
         expect($(div).find("input:button")[0]).toBeDefined();
     });
+
+	afterEach(function(done){
+	Meteor.logout(function() {
+		Tracker.afterFlush(done);
+	});
+	});
 
 it("después de login no muestra input para añadir players", function(){
 	var div = document.createElement("form");
