@@ -32,6 +32,25 @@ describe('PlayersService', function () {
     });
   });
 
+  describe('restarPuntos', function () {
+    it('Resto 5 puntos a un jugador dado el id', function () {
+      var playerId = 1;
+      spyOn(Players, 'update');
+
+      PlayersService.restarPuntos(playerId);
+      expect(Players.update.calls.argsFor(0)).toEqual([playerId, {$inc: {score: -5}}]);
+    });
+  });
+
+  describe('eliminarJugador',function(){
+    it('Elimino un jugador dado su id',function(){
+      var playerId = 1;
+      spyOn(Players,'remove');
+      PlayersService.eliminarJugador(playerId);
+      expect(PlayersService.playersExist()).toBe(false);
+    });
+  });
+
   describe('playersExist', function () {
     it('should return true when players exist', function () {
       var cursor = {
