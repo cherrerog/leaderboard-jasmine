@@ -38,8 +38,14 @@ describe("Point Assignment", function () {
 
   it("should give a player 5 points when he is selected and the button is pressed", function () {
     var graceInitialPoints = Players.findOne({name: "Grace Hopper"}).score;
-    $("input:button").click();
+    $(".increment").click();
     expect(Players.findOne({name: "Grace Hopper"}).score).toBe(graceInitialPoints + 5);
+  });
+
+  it("Quitar 5 puntos cuando el jugador este selecionado y pulse el boton correspondiente", function () {
+    var graceInitialPoints = Players.findOne({name: "Grace Hopper"}).score;
+    $(".decrement").click();
+    expect(Players.findOne({name: "Grace Hopper"}).score).toBe(graceInitialPoints - 5);
   });
 });
 

@@ -10,7 +10,15 @@ afterEach(function(done){
 	});
 	});
 it("después de login muestra input para añadir players", function(){
-...
-});
+	var div = document.createElement("form");
+        var comp = UI.render(Template.addPlayerForm);
+ 
+        UI.insert(comp, div);
+ 
+        
+ 
+        expect($(div).find("input:button")[0]).toBeDefined();
+    });
+
 
 });
